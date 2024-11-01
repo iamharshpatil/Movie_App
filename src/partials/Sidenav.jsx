@@ -1,6 +1,11 @@
+import { useEffect } from "react";
+import axios from "../utils/axios";
 import { Link } from "react-router-dom"
 
 function Sidenav() {
+
+
+
   return (
     <div className="w-[20%] h-full border-r-2 border-zinc-200 p-10">
          <h1 className="text-2xl text-white font-bold mr-3">
