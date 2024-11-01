@@ -40,15 +40,12 @@ useEffect(()=>{
           
           
           <div className="absolute w-[50%] max-h-[50vh] bg-zinc-200 top-[90%] overflow-auto rounded">
-            {searches.map(s,i =>{
-              return (<Link key={i} className=" hover:text-black hover:bg-zinc-300 duration-200  font-semibold text-zinc-600 w-[100%] p-10 flex justify-start items-center border-b-2 border-zinc-100  ">
-                <img src="" alt="" />
-                <span>Hello Everyone</span>
-                </Link>
-              )
-            })}
+             
 
-            {/*  */}
+            {/* <Link className=" hover:text-black hover:bg-zinc-300 duration-200  font-semibold text-zinc-600 w-[100%] p-10 flex justify-start items-center border-b-2 border-zinc-100  ">
+            <img src="" alt="" />
+            <span>Hello Everyone</span>
+            </Link> */}
             
          
           </div>
