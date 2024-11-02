@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 const Topnav = () => {
 
    const [query, setquery] = useState("")
-   const [searches, setsearches] = useState(null)
+   const [searches, setsearches] = useState([])
 
     const GetSerches =  async()=>{
     try {
@@ -25,9 +25,6 @@ useEffect(()=>{
   GetSerches()
 },[query])
 
-  
-   
-
   return (
     <div className="w-full h-[10vh] relative flex justify-start items-center ml-[15%]">
           <i class=" text-zinc-400 text-3xl ri-search-line"></i>
@@ -39,15 +36,14 @@ useEffect(()=>{
            {query.length > 0 && <i onClick={()=>setquery("")} class=" text-zinc-400 text-3xl ri-close-fill"></i> }
           
           
-          <div className="absolute w-[50%] max-h-[50vh] bg-zinc-200 top-[90%] overflow-auto rounded">
-             
-
-            {/* <Link className=" hover:text-black hover:bg-zinc-300 duration-200  font-semibold text-zinc-600 w-[100%] p-10 flex justify-start items-center border-b-2 border-zinc-100  ">
-            <img src="" alt="" />
-            <span>Hello Everyone</span>
-            </Link> */}
-            
-         
+          <div className="absolute w-[50%] max-h-[50vh] bg-zinc-200 top-[90%] overflow-auto rounded"> 
+             {searches.map((s,i)=><Link key={i} className=" hover:text-black hover:bg-zinc-300 duration-200  font-semibold text-zinc-600 w-[100%] p-10 flex justify-start items-center border-b-2 border-zinc-100  ">
+            <img
+            className="w-[10vh] h-[10vh] object-cover rounded mr-5"
+             src={`https://image.tmdb.org/t/p/original/${s.backdrop_path}`} alt="" />
+            <span>{s.title || s.name || s.original_name || s.original_title}</span>
+            </Link>)} 
+              
           </div>
 
       
