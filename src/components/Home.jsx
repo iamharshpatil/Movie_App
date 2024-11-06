@@ -13,7 +13,7 @@ function Home() {
     try {
       const { data } = await axios.get(`/trending/all/day`);
 
-      // Use Math.floor() to select a random index as an integer
+      
       const randomData = data.results[Math.floor(Math.random() * data.results.length)];
 
       setWallpaper(randomData);
