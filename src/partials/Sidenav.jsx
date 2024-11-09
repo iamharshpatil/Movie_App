@@ -18,8 +18,8 @@ function Sidenav() {
          <Link  to='/trending' className='hover:bg-[#6556CD] hover:text-white duration-300 rounded-lg p-4 '  > <i className="mr-2 ri-fire-fill"></i> Tranding</Link>
          <Link to='/popular' className='hover:bg-[#6556CD] hover:text-white duration-300 rounded-lg p-4 ' > <i className="mr-2 ri-bard-fill"></i> Popular</Link>
          <Link to='/movie' className='hover:bg-[#6556CD] hover:text-white duration-300 rounded-lg p-4 ' > <i className="mr-2 ri-movie-2-ai-fill"></i> Movies</Link>
-         <Link to='/tvshow' className='hover:bg-[#6556CD] hover:text-white duration-300 rounded-lg p-4 ' > <i className="mr-2 ri-slideshow-3-fill"></i> Tv Shows</Link>
-         <Link className='hover:bg-[#6556CD] hover:text-white duration-300 rounded-lg p-4 ' ><i className="mr-2 ri-team-fill"></i> People</Link>
+         <Link to='/tv' className='hover:bg-[#6556CD] hover:text-white duration-300 rounded-lg p-4 ' > <i className="mr-2 ri-slideshow-3-fill"></i> Tv Shows</Link>
+         <Link to='/person' className='hover:bg-[#6556CD] hover:text-white duration-300 rounded-lg p-4 ' ><i className="mr-2 ri-team-fill"></i> People</Link>
          </nav>
 
          <hr className="bg-none h-[1px] mt-[5px] bg-zinc-400" />

@@ -14,7 +14,7 @@ const Tvshow = () => {
     const [tv, settv] = useState([]);
     const [page, setpage] = useState(1)
     const [hasMore, sethasMore] = useState(true)
-  document.title = "PrimeMax | TV Show"
+  document.title = "PrimeMax | Tv Show"
 
   const GetTv = async () => {
     try {
@@ -57,7 +57,8 @@ const Tvshow = () => {
                 onClick={() => navigate(-1)}
                 className="text-2xl ml- hover:text-[#6556CD] ri-arrow-left-line"
               ></i>{" "}
-              Tvshow<small className="text-sm text-zinc-600 ml-2">({category})</small>
+              Tv Show 
+              <small className="text-sm text-zinc-600 ml-2">({category})</small>
             </h1>
     
             <div className="flex items-center w-[80%]">
@@ -79,7 +80,7 @@ const Tvshow = () => {
             hasMore={hasMore}
             loader={<h1>Loading...</h1>}>
     
-          <Cards data={tv} title={category} />
+          <Cards data={tv} title='tvshow' />
             </InfiniteScroll>
     
     
