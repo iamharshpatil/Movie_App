@@ -18,14 +18,15 @@ function App() {
         <Route path="/trending" element={<Trending />} />
         <Route path="/popular" element={<Popular />} />
         <Route path="/movie" element={<Movie />} />
-        <Route path="/movie/details/:id" element={<Moviedetails />} />
+        <Route path="/movie/details/:id" element={<Moviedetails />}>
+          <Route path="/movie/details/:id/trailer" element={<Trailer />} />
+        </Route>
         <Route path="/tv" element={<Tvshow />} />
         <Route path="/tv/details/:id" element={<Tvdetails />} />
         <Route path="/person" element={<People />} />
         <Route path="/person/details/:id" element={<Persondetails />} />
-        
+
         {/* Dynamic trailer route for movie and TV categories */}
-        <Route path="/:category/details/:id/trailer" element={<Trailer />} />
       </Routes>
     </div>
   );

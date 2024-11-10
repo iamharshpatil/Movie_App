@@ -2,14 +2,17 @@ import ReactPlayer from "react-player";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import Loading from "../components/Loading";
+import { useEffect } from "react";
 
 const Trailer = () => {
     const navigate = useNavigate();
+
     const { pathname } = useLocation();
     const category = pathname.includes('movies') ? 'movies' : "tv";
-    const ytvideo = useSelector(state => state);
+    const ytvideo = useSelector(state => state.movie.info.videos);
 
-    console.log(pathname, ytvideo);
+
+    console.log(ytvideo);
     
 
     return (
