@@ -6,9 +6,9 @@ import Movie from "./components/Movie";
 import Tvshow from "./components/Tvshow";
 import People from "./components/People";
 import Moviedetails from "./components/Moviedetails";
-
 import Persondetails from "./components/Persondetails";
 import Tvdetails from "./components/Tvdetails";
+import Trailer from "./partials/Trailer";
 
 function App() {
   return (
@@ -19,11 +19,13 @@ function App() {
         <Route path="/popular" element={<Popular />} />
         <Route path="/movie" element={<Movie />} />
         <Route path="/movie/details/:id" element={<Moviedetails />} />
-
         <Route path="/tv" element={<Tvshow />} />
         <Route path="/tv/details/:id" element={<Tvdetails />} />
         <Route path="/person" element={<People />} />
         <Route path="/person/details/:id" element={<Persondetails />} />
+        
+        {/* Dynamic trailer route for movie and TV categories */}
+        <Route path="/:category/details/:id/trailer" element={<Trailer />} />
       </Routes>
     </div>
   );

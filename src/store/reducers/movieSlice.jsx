@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { info } from "autoprefixer";
+
 
 const initialState = {
   info: null,
