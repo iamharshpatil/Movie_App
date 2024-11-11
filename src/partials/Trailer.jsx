@@ -9,11 +9,11 @@ const Trailer = () => {
     const navigate = useNavigate();
 
     const { pathname } = useLocation();
-    const category = pathname.includes('movies') ? 'movies' : "tv";
-    const ytvideo = useSelector(state => state.movie.info.videos);
+    const category = pathname.includes('movie') ? 'movie' : "tv";
+    const ytvideo = useSelector(state => state[category].info.videos);
+     
 
-
-    
+   
 
     return (
         <div className="absolute bg-black z-[100] top-0 left-0 w-screen h-screen flex items-center justify-center">
@@ -30,6 +30,8 @@ const Trailer = () => {
                 />
             ) : (
                 <Notfound/>
+                
+                
             )}
         </div>
     );

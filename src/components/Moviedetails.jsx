@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncloadmovie, removemovie } from "../store/actions/movieAction";
 import { Link, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
-import Loading from "../components/Loading";
+import Loading from "./Loading";
 import HorizontalCards from "../partials/HorizontalCards";
 
 const Moviedetails = () => {
@@ -87,8 +87,8 @@ const Moviedetails = () => {
             </p>{" "}
             |<p>Rating: {(info?.detail.vote_average || 0) * 1}/10</p> |
             <p>Genres: {info?.detail.genres?.map((g) => g.name).join(", ")}</p>{" "}
-            |<p>Popularity: {info?.detail.popularity || 0}</p> |
-            <p>Budget: {info?.detail.budget || 0}</p>
+            |<p>Popularity: {info?.detail.popularity || 'No Data'}</p> |
+            <p>Budget: {info?.detail.budget || 'No Data'}</p>
           </div>
 
           <h1 className="text-2xl mb-3 mt-5">Overview</h1>
