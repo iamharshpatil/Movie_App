@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import Loading from "../components/Loading";
 import { useEffect } from "react";
+import Notfound from "../components/Notfound";
 
 const Trailer = () => {
     const navigate = useNavigate();
@@ -12,7 +13,6 @@ const Trailer = () => {
     const ytvideo = useSelector(state => state.movie.info.videos);
 
 
-    console.log(ytvideo);
     
 
     return (
@@ -21,7 +21,6 @@ const Trailer = () => {
                 onClick={() => navigate(-1)}
                 className="absolute text-3xl text-white right-[5%] top-[5%] hover:text-[#6556CD] ri-close-fill"
             >
-                &times;
             </button>
             {ytvideo?.key ? (
                 <ReactPlayer
@@ -30,7 +29,7 @@ const Trailer = () => {
                     url={`https://www.youtube.com/watch?v=${ytvideo.key}`}
                 />
             ) : (
-                <Loading/>
+                <Notfound/>
             )}
         </div>
     );

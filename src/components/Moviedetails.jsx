@@ -98,7 +98,7 @@ const Moviedetails = () => {
           <p className="mb-10">{info.translations.join(", ")}</p>
 
           {/* Trailer Link */}
-            <Link
+            <Link 
             className="text-xl rounded-lg p-5 bg-[#6556CD]"
             to={`/movie/details/${id}/trailer`}>
                <i className="ri-play-fill mr-3"></i>

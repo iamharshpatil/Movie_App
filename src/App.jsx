@@ -9,6 +9,7 @@ import Moviedetails from "./components/Moviedetails";
 import Persondetails from "./components/Persondetails";
 import Tvdetails from "./components/Tvdetails";
 import Trailer from "./partials/Trailer";
+import Notfound from "./components/Notfound";
 
 function App() {
   return (
@@ -25,8 +26,8 @@ function App() {
         <Route path="/tv/details/:id" element={<Tvdetails />} />
         <Route path="/person" element={<People />} />
         <Route path="/person/details/:id" element={<Persondetails />} />
+        <Route path="*" element={<Notfound />} />
 
-        {/* Dynamic trailer route for movie and TV categories */}
       </Routes>
     </div>
   );
