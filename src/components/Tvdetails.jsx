@@ -169,7 +169,7 @@ const Tvdetails = () => {
         {info.detail.seasons.length > 0 ? info.detail.seasons.map((s, i) => (
           <div className="w-[15vh] mr-[10%]">
             <img
-              className=" shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] h-[40vh] min-w-[14vw] object-cover "
+              className=" shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] max-sm:h-[20vh] h-[40vh] min-w-[14vw] object-cover "
               src={`https://image.tmdb.org/t/p/original/${s.poster_path}`}
               alt=""
             />
