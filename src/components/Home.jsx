@@ -36,6 +36,7 @@ function Home() {
       console.log("Error:", error);
     }
   };
+  
 
   useEffect(() => {
     if (!wallpaper) {
@@ -66,6 +67,9 @@ function Home() {
   ) : (
     <Loading/>
   );
+
+
+  
 }
 
 export default Home;
