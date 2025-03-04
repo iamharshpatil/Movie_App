@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 
 const HorizontalCards = ({ data }) => {
   return (
-    <div className="w-[100%] flex overflow-y-hidden mb-5 p-5">
+    <div className="w-[100%] max-sm:h-[45%] flex overflow-y-hidden mb-5 p-5">
       {data.length > 0 ? data.map((d, i) => (
         <Link
           to={`/${d.media_type}/details/${d.id}`} // Note the leading slash here to prevent appending
           key={i}
-          className="min-w-[15%] bg-zinc-900 mr-5 mb-5"
+          className="max-sm:min-w-[50%]  min-w-[15%] bg-zinc-900 mr-5 mb-5"
         >
           <img
             className="w-full h-[45%] object-cover"

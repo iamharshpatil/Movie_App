@@ -4,10 +4,8 @@ import { Link } from "react-router-dom"
 
 function Sidenav() {
 
-
-
   return (
-    <div className="w-[20%] h-full border-r-2 border-zinc-200 p-10">
+    <div className="w-[20%] h-full border-r-2 border-zinc-200 p-10 max-sm:hidden ">
          <h1 className="text-2xl text-white font-bold mr-3">
          <i className= " text-[#6556CD] ri-tv-fill"></i>
           <span className="text-2xl">PrimeMax</span> 
@@ -33,5 +31,5 @@ function Sidenav() {
     </div>
   )
 }
-
+  
 export default Sidenav

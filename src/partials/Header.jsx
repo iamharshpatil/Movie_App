@@ -14,7 +14,7 @@ const Header = ({ data }) => {
       }}
       className="w-full h-[50vh] flex flex-col justify-end items-start p-[5%]"
     >
-      <h1 className="  w-[100%] text-5xl font-black text-white">
+      <h1 className="max-sm:text-2xl  w-[100%] text-5xl font-black text-white">
         {data.title || data.name || data.original_name || data.original_title}
       </h1>
       <p className="w-[70%] mt-3 mb-3 text-white">

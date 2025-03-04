@@ -16,10 +16,10 @@ const Trailer = () => {
    
 
     return (
-        <div className="absolute bg-black z-[100] top-0 left-0 w-screen h-screen flex items-center justify-center">
+        <div className="max-sm:top-[100%]  absolute bg-black z-[100] top-0 left-0 w-screen h-screen flex items-center justify-center">
             <button
                 onClick={() => navigate(-1)}
-                className="absolute text-3xl text-white right-[5%] top-[5%] hover:text-[#6556CD] ri-close-fill"
+                className="absolute text-3xl  text-white right-[5%] top-[5%] hover:text-[#6556CD] ri-close-fill"
             >
             </button>
             {ytvideo?.key ? (

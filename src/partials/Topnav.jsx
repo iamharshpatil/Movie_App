@@ -23,11 +23,11 @@ const Topnav = () => {
 
   return (
     <div className="w-[80%]  h-[10vh] relative flex mx-auto  items-center">
-      <i className=" text-zinc-400 text-3xl ri-search-line"></i>
+      <i className=" max-sm:text-xl text-zinc-400 text-3xl ri-search-line"></i>
       <input
         onChange={(e) => setquery(e.target.value)}
         value={query}
-        className="w-[50%] mx-10 p-5 text-xl outline-none border-none bg-transparent text-zinc-400  "
+        className="max-sm:w-full w-[50%] mx-10 p-5 text-xl outline-none border-none bg-transparent text-zinc-400  "
         type="text"
         placeholder="Search anything"
       />
@@ -35,11 +35,11 @@ const Topnav = () => {
       {query.length > 0 && (
         <i
           onClick={() => setquery("")}
-          className=" absolute right-0 text-zinc-400 text-3xl ri-close-fill"
+          className="max-sm:text-xl  absolute right-0 text-zinc-400 text-3xl ri-close-fill"
         ></i>
       )}
 
-      <div className=" z-[100] absolute w-[50%] max-h-[50vh] bg-zinc-200 top-[90%] overflow-auto left-[6%] rounded">
+      <div className="max-sm:w-full  z-[100] absolute w-[50%] max-h-[50vh] bg-zinc-200 top-[90%] overflow-auto left-[6%] rounded">
         {searches.map((s, i) => (
           <Link
           to={`/${s.media_type}/details/${s.id}`}

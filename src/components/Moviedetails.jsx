@@ -26,10 +26,10 @@ const Moviedetails = () => {
         backgroundSize: "cover",
         backgroundPosition: "top 10%",
       }}
-      className="relative w-screen overflow-y-auto px-[10%]"
+      className="relative w-screen overflow-y-auto max-sm:overflow-x-hidden px-[10%]"
     >
       {/* Part 1: Navigation */}
-      <nav className="w-full h-[10vh] items-center text-zinc-100 flex gap-10 text-xl">
+      <nav className="w-full h-[11vh] items-center text-zinc-100 flex gap-10 text-xl">
         <Link
           onClick={() => navigate(-1)}
           className="text-2xl ml- hover:text-[#6556CD] ri-arrow-left-line"
@@ -60,16 +60,16 @@ const Moviedetails = () => {
       </nav>
 
       {/* Part 2: Poster and Details */}
-      <div className="w-full flex ">
+      <div className="max-sm:flex-col w-full flex ">
         <img
-          className="shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] h-[50vh] object-cover"
+          className="shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)]  h-[50vh] object-cover"
           src={`https://image.tmdb.org/t/p/original/${
             info?.detail.poster_path || ""
           }`}
           alt="Poster"
         />
 
-        <div className="ml-[5%] text-white">
+        <div className="ml-[5%]  text-white">
           <h1 className="text-5xl font-black">
             {info?.detail.title ||
               info?.detail.name ||
@@ -108,7 +108,7 @@ const Moviedetails = () => {
       </div>
 
       {/* Part 3: Available on Platforms */}
-      <div className="w-[80%] flex flex-col gap-y-5 mt-10 ">
+      <div className="w-[80%] max-sm:overflow-x-auto flex flex-col gap-y-5 mt-10 ">
         {info.watchproviders && info.watchproviders.flatrate && (
           <div className="flex gap-x-10 items-center text-white">
             <h1>Available on Platform</h1>
@@ -157,7 +157,7 @@ const Moviedetails = () => {
 
       {/* Part 4: Recommendations */}
       <hr className="mt-10 mb-5 border-none h-[1px] bg-zinc-500" />
-      <h1 className="text-3xl font-bold text-white">
+      <h1 className="text-3xl max-sm:text-xl font-bold text-white">
         Recommendations & Similar Stuff
       </h1>
       <HorizontalCards

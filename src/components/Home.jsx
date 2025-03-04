@@ -50,11 +50,11 @@ function Home() {
   return wallpaper && trending  ? (
     <>
       <Sidenav />
-      <div className="w-[80%] h-full overflow-auto overflow-x-hidden">
+      <div className=" max-sm:w-full w-[80%] h-full overflow-auto overflow-x-hidden">
         <Topnav />
         <Header data={wallpaper} />
-        <div className=" flex justify-between p-5">
-        <h1 className="text-3xl  font-bold  text-zinc-200 ">Trending</h1>
+        <div className="max-sm:gap-28 flex justify-between p-5">
+        <h1 className="max-sm:text-xl text-3xl  font-bold  text-zinc-200 ">Trending</h1>
         
         
         <Dropdown title="Filter" options={["tv",'movie','all']}  func={(e)=> setcategory(e.target.value)} />
