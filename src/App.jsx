@@ -1,5 +1,6 @@
 import { lazy,Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
+import Loading from "./components/Loading";
 const Home = lazy(() => import("./components/Home"));
 const Trending = lazy(() => import("./components/Trending"));
 const Popular = lazy(() => import("./components/Popular"));
@@ -16,7 +17,7 @@ function App() {
   return (
     <div className="bg-[#1F1E24] w-screen h-screen overflow-x-hidden flex  ">
      
-      <Suspense fallback={<div className="text-white text-xl m-auto">Loading...</div>}>
+      <Suspense fallback={<div className="text-white text-xl m-auto"><Loading/></div>}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/trending" element={<Trending />} />

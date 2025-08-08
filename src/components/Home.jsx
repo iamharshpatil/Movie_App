@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-import Sidenav from "../partials/Sidenav";
-import Topnav from "../partials/Topnav";
+import { lazy } from "react";
 import axios from "../utils/axios";
-import Header from "../partials/Header";
-import HorizontalCards from "../partials/HorizontalCards";
-import Dropdown from "../partials/Dropdown";
-import Loading from "./Loading";
+
+const Sidenav = lazy(() => import("../partials/Sidenav"));
+const Topnav = lazy(() => import("../partials/Topnav"));
+const Header = lazy(() => import("../partials/Header"));
+const HorizontalCards = lazy(() => import("../partials/HorizontalCards"));
+const Dropdown = lazy(() => import("../partials/Dropdown"));
+const Loading = lazy(() => import("./Loading"));
+
 
 function Home() {
   document.title = "PrimeMax | Homepage";
