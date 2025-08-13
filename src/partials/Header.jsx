@@ -7,7 +7,7 @@ const Header = ({ data }) => {
 
   useEffect(() => {
     const updateOverviewLength = () => {
-      if (window.innerWidth <= 640) { // 640px is the breakpoint for small screens (sm)
+      if (window.innerWidth <= 640) { 
         setOverviewLength(100);
       } else {
         setOverviewLength(200);
@@ -31,12 +31,12 @@ const Header = ({ data }) => {
         backgroundSize: "cover",
         backgroundPosition: "top 10%",
       }}
-      className="w-full h-[50vh] flex flex-col justify-end items-start p-[5%]"
+      className="w-full h-[40vh] rounded flex flex-col  max-sm:w-[100vw]     justify-end items-start p-[5%]"
     >
-      <h1 className="max-sm:text-2xl  w-[100%] text-5xl font-black text-white">
+      <h1 className="max-sm:text-2xl font-sans  max-sm:mt-5  w-[100%] text-5xl font-black text-white">
         {data.title || data.name || data.original_name || data.original_title}
       </h1>
-      <p className="w-[70%] mt-3 mb-3 text-white">
+      <p className="w-[70%]  mt-3 mb-3 text-white">
       {data.overview.slice(0, overviewLength)}... 
         <Link to={`/${data.media_type}/details/${data.id}`} className="text-blue-400">more</Link>
       </p>
@@ -47,7 +47,7 @@ const Header = ({ data }) => {
         {data.media_type.toUpperCase()}
       </p>
       
-      <Link to={`/${data.media_type}/details/${data.id}`} className="bg-[#6556CD] p-4 rounded text-white  mt-5">Watch Trailer</Link>
+      <Link to={`/${data.media_type}/details/${data.id}`} className="bg-[#1980E6] p-4 rounded text-white  mt-5">Watch Trailer</Link>
     </div>
   );
 };

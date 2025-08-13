@@ -1,19 +1,32 @@
-import React from 'react'
+import React from "react";
+import {
+  Select,
+  SelectGroup,
+  SelectValue,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+} from "../components/ui/select";
 
-const Dropdown = ({title,options,func}) => {
+const Dropdown = ({ title, options, func }) => {
   return (
-    <div className="select">
-<select defaultValue="0" onChange={func} name="format" id="format">
-<option value="e" disabled>
-{title}
-</option>
-{options.map((o,i)=>
-    <option key={i} value={o}>
-{o.toUpperCase()}
-</option>)}
-</select>
-</div>
-  )
-}
+    <div className="w-[180px]">
+      <Select onValueChange={func}>
+        <SelectTrigger className="w-full">
+          <SelectValue placeholder={title} />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            {options.map((o, i) => (
+              <SelectItem key={i} value={o}>
+                {o.toUpperCase()}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+    </div>
+  );
+};
 
-export default Dropdown
+export default Dropdown;

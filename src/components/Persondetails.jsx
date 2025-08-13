@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { asyncloadperson, removeperson } from "../store/actions/personAction";
 import {
   Link,
-  Outlet,
   useLocation,
   useNavigate,
   useParams,
@@ -13,11 +12,11 @@ import HorizontalCards from "../partials/HorizontalCards";
 import Dropdown from "../partials/Dropdown";
 
 const Persondetails = () => {
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
   const { id } = useParams();
-  const { info } = useSelector((state) => state.person);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
+  const { info } = useSelector((state) => state.person);
   const [category, setcategory] = useState("movie");
 
   useEffect(() => {
@@ -27,136 +26,109 @@ const Persondetails = () => {
     };
   }, [id, dispatch]);
 
-  return info ? (
-    <div className="px-[10%] py-[1%] w-screen bg-[#1F1E24] flex flex-col">
-      {/* Part 1: Navigation */}
-      <nav className="h-[10vh] w-full items-center text-zinc-100 flex gap-10 mb-5 text-xl">
-        <Link
+  if (!info) return <Loading />;
+
+  const { detail, externalid, combinedCredits, movieCredits, tvCredits } = info;
+  const creditsToShow = info[`${category}Credits`]?.cast || [];
+
+  return (
+    <div className="px-[10%] py-[1%] w-screen bg-[#111418] flex flex-col">
+      {/* Back Navigation */}
+      <nav className="h-[10vh] w-full flex items-center gap-10 mb-5 text-xl">
+        <button
           onClick={() => navigate(-1)}
-          className="text-2xl ml- hover:text-[#6556CD] ri-arrow-left-line"
-        ></Link>
+          className="text-2xl hover:text-[#1980E6] ri-arrow-left-line"
+        />
       </nav>
 
-      <div className="w-full flex ">
-        {/* Part 2: left poster and details */}
-
-        <div className="w-[20%]">
+      <div className="w-full flex flex-col lg:flex-row gap-10">
+        {/* LEFT SECTION */}
+        <div className="w-full lg:w-[25%] flex flex-col items-center">
           <img
-            className="shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] h-[50vh] object-cover"
-            src={`https://image.tmdb.org/t/p/original/${
-              info.detail.profile_path || ""
-            }`}
+            className="shadow-xl h-[50vh] object-cover rounded-md"
+            src={`https://image.tmdb.org/t/p/original/${detail.profile_path || ""}`}
             alt="Poster"
           />
-          <hr className="mt-10 mb-5 border-none h-[1px] bg-zinc-500" />
 
-          {/* Part 3: social Media Links */}
-          <div className="text-xl text-white flex gap-x-5">
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={`https://www.wikidata.org/wiki/${info.externalid.wikidata_id}`}
-            >
-              <i className="ri-earth-fill"></i>
-            </a>
-
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={`https://www.facebook.com/${info.externalid.facebook_id}`}
-            >
-              <i className="ri-facebook-circle-fill"></i>
-            </a>
-
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={`https://www.instagram.com/${info.externalid.instagram_id}`}
-            >
-              <i className="ri-instagram-fill"></i>
-            </a>
-
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={`https://www.twitter.com/${info.externalid.twitter_id}`}
-            >
-              <i className="ri-twitter-x-fill"></i>
-            </a>
+          {/* Social Links */}
+          <div className="text-xl text-white flex gap-5 mt-5">
+            {externalid?.wikidata_id && (
+              <a target="_blank" rel="noopener noreferrer" href={`https://www.wikidata.org/wiki/${externalid.wikidata_id}`}>
+                <i className="ri-earth-fill" />
+              </a>
+            )}
+            {externalid?.facebook_id && (
+              <a target="_blank" rel="noopener noreferrer" href={`https://www.facebook.com/${externalid.facebook_id}`}>
+                <i className="ri-facebook-circle-fill" />
+              </a>
+            )}
+            {externalid?.instagram_id && (
+              <a target="_blank" rel="noopener noreferrer" href={`https://www.instagram.com/${externalid.instagram_id}`}>
+                <i className="ri-instagram-fill" />
+              </a>
+            )}
+            {externalid?.twitter_id && (
+              <a target="_blank" rel="noopener noreferrer" href={`https://www.twitter.com/${externalid.twitter_id}`}>
+                <i className="ri-twitter-x-fill" />
+              </a>
+            )}
           </div>
 
-          {/* Personal Info */}
-          <h1 className="text-2xl text-zinc-400 font-semibold my-5">
-            Person Info{" "}
-          </h1>
-          <h1 className="text-lg text-zinc-400 font-semibold">Known For</h1>
-          <h1 className=" text-zinc-400">
-            {" "}
-            {info.detail.known_for_department}{" "}
-          </h1>
-
-          <h1 className="text-lg text-zinc-400 font-semibold mt-3">Gender</h1>
-          <h1 className=" text-zinc-400">
-            {" "}
-            {info.detail.gender === 2 ? "Male" : "Female"}{" "}
-          </h1>
-
-          <h1 className="text-lg text-zinc-400 font-semibold mt-3">Birthday</h1>
-          <h1 className=" text-zinc-400"> {info.detail.birthday} </h1>
-
-          <h1 className="text-lg text-zinc-400 font-semibold mt-3">DeathDay</h1>
-          <h1 className=" text-zinc-400">
-            {" "}
-            {info.detail.deathday ? info.detail.deathday : "Still Alive"}{" "}
-          </h1>
-
-          <h1 className="text-lg text-zinc-400 font-semibold mt-3">
-            Place of Birth
-          </h1>
-          <h1 className=" text-zinc-400"> {info.detail.place_of_birth} </h1>
+          {/* Person Info */}
+          <div className="text-white mt-6 w-full">
+            <h2 className="text-2xl font-bold mb-4">Person Info</h2>
+            <p><span className="font-semibold">Known For:</span> {detail.known_for_department}</p>
+            <p><span className="font-semibold">Gender:</span> {detail.gender === 2 ? "Male" : "Female"}</p>
+            <p><span className="font-semibold">Birthday:</span> {detail.birthday || "Unknown"}</p>
+            <p><span className="font-semibold">Deathday:</span> {detail.deathday || "Still Alive"}</p>
+            <p><span className="font-semibold">Place of Birth:</span> {detail.place_of_birth || "Unknown"}</p>
+          </div>
         </div>
 
-        {/* Part 3: right details and info */}
-        <div className="w-[80%] ml-5 ">
-          <h1 className="text-6xl text-zinc-400 font-black my-5">
-            {info.detail.name}{" "}
-          </h1>
+        {/* RIGHT SECTION */}
+        <div className="w-full lg:w-[75%]">
+          <h1 className="text-5xl text-white font-black mb-5">{detail.name}</h1>
 
-          <h1 className="text-lg text-zinc-400 font-semibold mt-3">
-            Biography
-          </h1>
-          <p className="text-zinc-400 mt-3">{info.detail.biography}</p>
+          {/* Biography */}
+          {detail.biography && (
+            <>
+              <h2 className="text-lg text-white font-semibold">Biography</h2>
+              <p className="text-white mt-3 whitespace-pre-line">{detail.biography}</p>
+            </>
+          )}
 
-          <h1 className="text-lg text-zinc-400 font-semibold mt-5">Summary</h1>
-          <HorizontalCards data={info.combinedCredits.cast} />
+          {/* Summary */}
+          <h2 className="text-lg text-white font-semibold mt-8">Summary</h2>
+          <HorizontalCards data={combinedCredits.cast} />
 
-          <div className="w-full flex justify-between v">
-            <h1 className="text-xl text-zinc-400 font-semibold mt-5">Acting</h1>
+          {/* Acting + Filter */}
+          <div className="flex justify-between items-center mt-8">
+            <h2 className="text-xl text-white font-semibold">Acting Credits</h2>
             <Dropdown
               title="Category"
               options={["tv", "movie"]}
-              func={(e) => setcategory(e.target.value)}
+              func={(value) => setcategory(value)}
             />
           </div>
 
-          <div className="list-disc mb-5 text-zinc-400 w-full h-[50vh] overflow-x-hidden overflow-y-auto shadow-lg shadow-[rgba(255,255,255,.3)] border-2 border-zinc-700 p-5   mt-5">
-            {info[category + "Credits"].cast.map((c, i) => (
-              <li key={i} className="hover:text-white cursor-pointer p-5 hover:bg-[#19191d] duration-300 ">
+          {/* Acting List */}
+          <ul className="list-disc text-white w-full h-[50vh] overflow-y-auto mt-4  border px-10 border-zinc-700 rounded-md shadow-inner shadow-zinc-600/30">
+            {creditsToShow.map((c, i) => (
+              <li key={i} className="hover:bg-[#19191d] p-3 rounded cursor-pointer duration-300">
                 <Link to={`/${category}/details/${c.id}`}>
-                  <span>
-                    {" "}
+                  <span className="font-medium ">
                     {c.title || c.name || c.original_title || c.original_name}
                   </span>
-                  <span className="block ml-5"> {c.character && `Character Name : ${c.character}`} </span>
+                  {c.character && (
+                    <div className="text-sm text-zinc-300 ml-2">Character: {c.character}</div>
+                  )}
                 </Link>
               </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </div>
-  ) : (
-    <Loading />
   );
 };
 

@@ -1,6 +1,7 @@
 import { lazy,Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import Loading from "./components/Loading";
+import Topnav from "./partials/Topnav";
 const Home = lazy(() => import("./components/Home"));
 const Trending = lazy(() => import("./components/Trending"));
 const Popular = lazy(() => import("./components/Popular"));
@@ -15,9 +16,9 @@ const Trailer = lazy(() => import("./partials/Trailer"));
 
 function App() {
   return (
-    <div className="bg-[#1F1E24] w-screen h-screen overflow-x-hidden flex  ">
-     
+    <div className="bg-[#111418]  text-white w-screen h-screen flex-col overflow-x-hidden flex  ">
       <Suspense fallback={<div className="text-white text-xl m-auto"><Loading/></div>}>
+      <Topnav />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/trending" element={<Trending />} />

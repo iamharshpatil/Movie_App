@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import Topnav from "../partials/Topnav";
-import Dropdown from "../partials/Dropdown";
-import { useEffect, useState } from "react";
-import axios from "../utils/axios";
-import Cards from "../partials/Cards";
-import Loading from "../components/Loading";
+import { useEffect, useState,lazy } from "react";
 import InfiniteScroll from 'react-infinite-scroll-component';
+import axios from "../utils/axios";
+
+const Topnav = lazy(() => import("../partials/Topnav"));
+const Dropdown = lazy(() => import("../partials/Dropdown"));
+const Cards = lazy(() => import("../partials/Cards"));
+const Loading = lazy(() => import("../components/Loading"));
 
 const Trending = () => {
   const navigate = useNavigate();
@@ -48,29 +49,28 @@ const Trending = () => {
   }, [category, duration]);
 
   return trending.length > 0 ? (
-    <div className=" w-screen h-screen ">
-      <div className=" px-[5%] w-full flex items-center justify-between">
-        <h1 className="text-2xl text-zinc-400 font-semibold">
+    <div className="w-screen px-[8%] max-sm:px-[4%] bg-[#111418] h-screen">
+      <div className="flex max-sm:flex-col max-sm:gap-4 justify-between px-5 max-sm:px-2">
+        <h1 className="text-2xl my-5 max-sm:my-2 font-semibold">
           <i
             onClick={() => navigate(-1)}
-            className="text-2xl ml- hover:text-[#6556CD] ri-arrow-left-line"
+            className="text-2xl hover:text-[#1980E6] ri-arrow-left-line"
           ></i>{" "}
           Trending
         </h1>
 
-        <div className="flex items-center w-[80%]">
-          <Topnav />
+        <div className="flex max-sm:flex max-sm:gap-2 items-center">
 
           <Dropdown
             title="Category"
             options={["movie", "tv", "all"]}
-            func={(e) => setcategory(e.target.value)}
+            func={(value) => setcategory(value)}
           />
-          <div className="w-[2%]"></div>
+          <div className="w-[2%] max-sm:hidden"></div>
           <Dropdown
             title="Duration"
             options={["week", "day"]}
-            func={(e) => setduration(e.target.value)}
+            func={(value) => setduration(value)}
           />
         </div>
       </div>
@@ -79,7 +79,11 @@ const Trending = () => {
         dataLength={trending.length}
         next={GetTrending}
         hasMore={hasMore}
-        loader={<h1>Loading...</h1>}>
+        loader={<div className="w-full flex justify-center p-4">
+            <div className="w-10 h-10 border-4 border-[#1980E6] border-t-transparent rounded-full animate-spin"></div>
+          </div>}
+        className="max-sm:mt-2"
+        >
 
       <Cards data={trending} title={category} />
         </InfiniteScroll>

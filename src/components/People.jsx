@@ -50,18 +50,17 @@ const People = () => {
 
 
   return person.length > 0 ? (
-    <div className=" w-screen h-screen ">
-      <div className=" px-[5%] w-full flex items-center justify-between">
-        <h1 className="text-2xl text-zinc-400 font-semibold">
+    <div className=" w-screen px-[8%] bg-[#111418] h-screen ">
+      <div className=" flex justify-between px-5 ">
+        <h1 className="text-2xl my-5 font-semibold">
           <i
             onClick={() => navigate(-1)}
-            className="text-2xl ml- hover:text-[#6556CD] ri-arrow-left-line"
+            className="text-2xl ml- hover:text-[#1980E6] ri-arrow-left-line"
           ></i>{" "}
           People
         </h1>
 
         <div className="flex items-center w-[80%]">
-          <Topnav />
 
           
           <div className="w-[2%]"></div>
@@ -73,7 +72,9 @@ const People = () => {
         dataLength={person.length}
         next={GetPerson}
         hasMore={hasMore}
-        loader={<h1>Loading...</h1>}>
+        loader={<div className="w-full flex justify-center p-4">
+            <div className="w-10 h-10 border-4 border-[#1980E6] border-t-transparent rounded-full animate-spin"></div>
+          </div>}>
 
       <Cards data={person} title="person" />
         </InfiniteScroll>

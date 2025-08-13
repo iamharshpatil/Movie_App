@@ -35,7 +35,7 @@ const Tvdetails = () => {
       className="relative w-screen overflow-y-auto max-sm:overflow-x-hidden px-[10%]"
     >
       {/* Part 1: Navigation */}
-      <nav className="w-full h-[10vh] items-center text-zinc-100 flex gap-10 text-xl">
+      <nav className="w-full max-sm:hidden h-[10vh] items-center text-zinc-100 flex gap-10 text-xl">
         <Link
           onClick={() => navigate(-1)}
           className="text-2xl ml- hover:text-[#6556CD] ri-arrow-left-line"
@@ -66,7 +66,7 @@ const Tvdetails = () => {
       </nav>
 
       {/* Part 2: Poster and Details */}
-      <div className="w-full flex max-sm:flex-col ">
+      <div className="w-full max-sm:mt-5 flex max-sm:flex-col ">
         <img
           className="shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] h-[50vh] object-cover"
           src={`https://image.tmdb.org/t/p/original/${
@@ -75,8 +75,8 @@ const Tvdetails = () => {
           alt="Poster"
         />
 
-        <div className="ml-[5%] text-white">
-          <h1 className="text-5xl font-black max-sm:text-4xl">
+        <div className="ml-[5%] max-sm:mt-1 text-white">
+          <h1 className="text-5xl  font-black max-sm:text-4xl">
             {info?.detail.title ||
               info?.detail.name ||
               info?.detail.original_title ||
@@ -86,7 +86,7 @@ const Tvdetails = () => {
             {info?.detail.tagline || info?.detail.overview}
           </h2>
 
-          <div className="flex gap-5 mt-2">
+          <div className="flex gap-5 max-sm:hidden mt-2">
             <p>
               Release Date:{" "}
               {info?.detail.release_date || info?.detail.first_air_date}
