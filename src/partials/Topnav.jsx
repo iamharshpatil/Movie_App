@@ -51,12 +51,13 @@ const Topnav = () => {
 
   return (
     <div>
-      <div className="w-[100%] justify-around gap-10  h-[8vh]   text-white relative flex mx-auto  items-center">
+      <div className="w-[100%] justify-around gap-10  max-sm:pt-5  h-[8vh]   text-white relative flex mx-auto  items-center">
         <div className="flex items-center">
-          <h1 className="text-2xl  font-bold mr-3">
+          {/* <h1 className="text-2xl  font-bold mr-3">
             <i className=" text-white ri-tv-fill"></i>
             <span className=" font-luxora text-2xl">PrimeMax</span>
-          </h1>
+          </h1> */}
+          <img className="w-40" src="Logo.png" alt="" />
 
           <nav className="flex  max-sm:hidden gap-3">
             <Link
